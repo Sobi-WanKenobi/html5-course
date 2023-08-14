@@ -12,6 +12,21 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
+    <script>
+        function save() {
+            localStorage.setItem("applepie", 'true')
+        }
+
+        window.onload = function() {
+            var favorite = document.getElementById('favorite');
+            if(window.localStorage) {
+                var storage = window.localStorage;
+                if(storage.getItem('applepie') === 'true') {
+                    favorite.innerHTML = 'Apple pie is one of your favorites';
+                }
+            }
+        }
+    </script>
   </head>
   <body>
     <header id="mainheader">
@@ -44,6 +59,10 @@
                 <a href="images/products/applepie.jpg" target="_blank"><img src="images/products/applepie.jpg" alt="Apple pie" width="600"></a>
                 <figcaption>Our world-famous apple pie</figcaption>
             </figure>
+            <p>
+                <button onclick="save()" type="button">Save as favorite</button>
+                <span id="favorite"></span>
+            </p>
             <div style="background-color: #f8f4f1; padding: 5px 0px 10px 10px;">
                 <strong>Price: $12.95</strong>
                 <h2>Description</h2>
